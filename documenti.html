@@ -1,0 +1,14 @@
+---
+layout: default
+title: Documenti
+---
+
+<h1>Documenti</h1>
+
+<ul>
+  {% for doc in site.documenti %}
+    <li>
+      <a href="{{ doc.url }}">{{ doc.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
