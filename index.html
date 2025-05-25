@@ -21,28 +21,24 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
       </div>
     {% endfor %}
   </div>
-</div><script>
-  async function loadRSS() {
-    const url = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://gabrieljones.it/tag/feed');
-    
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log("Contenuto RSS:", data.contents); // DEBUG
-      
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data.contents, "application/xml");
-      const items = xml.querySelectorAll("item");
-      console.log("Numero di item trovati:", items.length); // DEBUG
+</div><
 
-      items.forEach(item => {
-        console.log("Titolo:", item.querySelector("title").textContent);
-      });
 
-    } catch (err) {
-      console.error("Errore nel caricamento RSS:", err);
+  <script>
+fetch("https://gabrieljones.it/tag/feed.xml")
+  .then(response => response.text())
+  .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+  .then(data => {
+    const items = data.querySelectorAll("item");
+    let html = "<ul>";
+    for (let i = 0; i < Math.min(5, items.length); i++) {
+      const title = items[i].querySelector("title").textContent;
+      const link = items[i].querySelector("link").textContent;
+      html += `<li><a href="${link}">${title}</a></li>`;
     }
-  }
-
-  loadRSS();
+    html += "</ul>";
+    document.getElementById("latest-documents").innerHTML = html;
+  });
 </script>
+
+<div id="latest-documents">Caricamento documenti...</div>
