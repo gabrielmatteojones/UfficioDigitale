@@ -1,0 +1,28 @@
+{% assign author = site.data.authors[post.author_id] %}
+
+<div class="card h-100 shadow-sm border-0">
+  {% if post.image %}
+    <a href="{{ post.url }}">
+      <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}">
+    </a>
+  {% endif %}
+
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">
+      <a href="{{ post.url }}" class="text-decoration-none text-dark">{{ post.title }}</a>
+    </h5>
+    <p class="card-text text-muted mb-4">
+      {{ post.excerpt | strip_html | truncatewords: 25 }}
+    </p>
+
+    <div class="mt-auto d-flex align-items-center">
+      {% if author.avatar %}
+        <img src="{{ author.avatar }}" alt="{{ author.name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;">
+      {% endif %}
+      <div>
+        <small class="fw-bold">{{ author.name }}</small><br>
+        <small class="text-muted">{{ post.date | date: "%d %B %Y" }}</small>
+      </div>
+    </div>
+  </div>
+</div>

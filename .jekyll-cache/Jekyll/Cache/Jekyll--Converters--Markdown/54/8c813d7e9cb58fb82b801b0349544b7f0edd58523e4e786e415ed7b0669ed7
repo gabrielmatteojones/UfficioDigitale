@@ -1,0 +1,50 @@
+I"�<h1 id="titolo-di-primo-livello">Titolo di primo livello</h1>
+
+<h2 id="titolo-di-secondo-livello">Titolo di secondo livello</h2>
+
+<h3 id="titolo-di-terzo-livello">Titolo di terzo livello</h3>
+
+<p>Testo <strong>in grassetto</strong>, <em>in corsivo</em>, <strong><em>grassetto e corsivo</em></strong>, e anche <del>barrato</del>.</p>
+
+<blockquote>
+  <p>Questo è un blocco di citazione.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="-link">🔗 Link</h3>
+
+<p>Ecco un <a href="https://jekyllrb.com">link a Jekyll</a>.</p>
+
+<hr />
+
+<h3 id="-immagine">📷 Immagine</h3>
+
+<p><img src="https://placehold.co/600x200" alt="Esempio immagine" /></p>
+
+<hr />
+
+<h3 id="-lista-puntata">📋 Lista puntata</h3>
+
+<ul>
+  <li>Primo elemento</li>
+  <li>Secondo elemento
+    <ul>
+      <li>Sotto-elemento</li>
+    </ul>
+  </li>
+  <li>Terzo elemento</li>
+</ul>
+
+<hr />
+
+<h3 id="-lista-numerata">🔢 Lista numerata</h3>
+
+<ol>
+  <li>Prima cosa</li>
+  <li>Seconda cosa</li>
+  <li>Terza cosa</li>
+</ol>
+
+<hr />
+:ET

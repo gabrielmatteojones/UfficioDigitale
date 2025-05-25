@@ -1,0 +1,83 @@
+I"<h1 id="benvenuti-nellufficio-digitale-di-gabriel-matteo-jones">Benvenuti nell’ufficio digitale di Gabriel Matteo Jones!</h1>
+
+<p>L’Ufficio Digitale di Gabriel Matteo Jones è un servizio offerto da GJWS pensato per fornire supporto completo nella gestione di siti web e nella gestione aziendale.
+Attraverso questo sito, potrai accedere a una vasta gamma di risorse e contenuti pubblici relativi all’attività di Gabriel Matteo Jones, tra cui documenti ufficiali, l’ordinogramma, informazioni sulle organizzazioni coinvolte e molto altro ancora.</p>
+
+<p>Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione diretta con il mondo di Gabriel Matteo Jones, offrendo uno spazio digitale ordinato, aggiornato e accessibile a chiunque voglia conoscere meglio la sua realtà professionale.</p>
+
+<h1 id="titolo-di-primo-livello">Titolo di primo livello</h1>
+
+<h2 id="titolo-di-secondo-livello">Titolo di secondo livello</h2>
+
+<h3 id="titolo-di-terzo-livello">Titolo di terzo livello</h3>
+
+<p>Testo <strong>in grassetto</strong>, <em>in corsivo</em>, <strong><em>grassetto e corsivo</em></strong>, e anche <del>barrato</del>.</p>
+
+<blockquote>
+  <p>Questo è un blocco di citazione.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="-link">🔗 Link</h3>
+
+<p>Ecco un <a href="https://jekyllrb.com">link a Jekyll</a>.</p>
+
+<hr />
+
+<h3 id="-immagine">📷 Immagine</h3>
+
+<p><img src="https://placehold.co/600x200" alt="Esempio immagine" /></p>
+
+<hr />
+
+<h3 id="-lista-puntata">📋 Lista puntata</h3>
+
+<ul>
+  <li>Primo elemento</li>
+  <li>Secondo elemento
+    <ul>
+      <li>Sotto-elemento</li>
+    </ul>
+  </li>
+  <li>Terzo elemento</li>
+</ul>
+
+<hr />
+
+<h3 id="-lista-numerata">🔢 Lista numerata</h3>
+
+<ol>
+  <li>Prima cosa</li>
+  <li>Seconda cosa</li>
+  <li>Terza cosa</li>
+</ol>
+
+<hr />
+
+<h4>Pagina gestita da: </h4>
+
+<div style="max-width: 420px; margin: 2rem auto; padding: 1.5rem; border-radius: 16px; background: linear-gradient(145deg, #f0f0f0, #fafafa); box-shadow: 4px 4px 12px rgba(0,0,0,0.1); font-family: 'Segoe UI', sans-serif;">
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <img src="https://1.gravatar.com/avatar/53241b11fb23d653d6c97ab192be4c459ef4201d71bffe0b87f8c09c061c577b?size=900&amp;d=initials" alt="Avatar autore" style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #ccc;" />
+    <div>
+      <h2 style="margin: 0 0 0.2rem 0; font-size: 1.5rem;">Gabriel Matteo Jones</h2>
+      <p style="margin: 0; color: #666;">Scoprimi sul mio profilo</p>
+    </div>
+  </div>
+  <div style="margin-top: 1rem; color: #444;">
+    <p style="margin: 0.5rem 0;"><strong>Email:</strong> info@ufficiogabrielmatteojones.it</p>
+    <p style="margin: 0.5rem 0;"><strong>InCo:</strong> 
+      <a href="https://gabrieljones.it/gmj" target="_blank" style="color: #cc0000;">
+        @gmj
+      </a>
+    </p>
+    <p style="margin: 0.5rem 0;"><strong><b>Vai al mio profilo:&lt;/b&lt;/strong&gt; 
+      <a href="/gmj" target="_blank" style="color: #cc0000;">
+        @gmj
+      </a>
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</b></strong></p></div></div>
+:ET

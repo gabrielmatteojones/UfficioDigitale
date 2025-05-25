@@ -1,0 +1,12 @@
+title: Il Mio Tema Jekyll
+description: Tema personalizzato
+baseurl: ""
+url: ""
+sass:
+  sass_dir: _sass
+  style: compressed
+
+collections:
+  documenti:
+    output: true
+    permalink: /documenti/:title/
