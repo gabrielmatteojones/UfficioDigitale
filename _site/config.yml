@@ -9,4 +9,3 @@ sass:
 collections:
   documenti:
     output: true
-    permalink: /documenti/:title/

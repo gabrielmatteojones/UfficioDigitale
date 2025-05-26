@@ -156,7 +156,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
-            border-radius: 10;
+            border-radius: 10px;
         }
 
         @media (max-width: 768px) {
@@ -173,8 +173,12 @@
 <body>
       <header>
         <div class="logo">
+         <a href="/">
             <img src="https://gabrieljones.it/assets/logo.png" alt="Stemma del GMJ">
-            <h1>Ufficio di Gabriel</h1>
+         </a>
+        <a href="/">
+           <h1>Ufficio di Gabriel</h1>
+        </a>
         </div>
 
         <div class="social-icons">
@@ -230,78 +234,71 @@
     </div>
 
   <div class="container">
+  <div id="alertGabriel" class="custom-alert">
+  <span class="closebtn" onclick="chiudiAlert()">&times;</span>
+  <strong>Allerta N. 4/2025:</strong> Questo è un nuovo sito realizzao con DataWin tramite strumenti di <a href="https://gjws.it/">GJWS</a>, per mal funzionamenti o feedback andare su questo <a href="https://gjws.it/forms/a425/">link</a>.
+</div>
+
+<style>
+  .custom-alert {
+    background-color: #fff0f0;
+    border: 3px solid #a40000;
+    color: #a40000;
+    padding: 15px 25px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+
+  .custom-alert .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #a40000;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .custom-alert .closebtn:hover {
+    color: #e60000;
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  function chiudiAlert() {
+    document.getElementById("alertGabriel").style.display = "none";
+  }
+</script>
+
   <main>
-    <h1 id="benvenuti-nellufficio-digitale-di-gabriel-matteo-jones">Benvenuti nell’ufficio digitale di Gabriel Matteo Jones!</h1>
+    <div class="home">
+<h2 class="post-list-heading">Posts</h2>
+    <ul class="post-list"><li><span class="post-meta">May 26, 2025</span>
+        <h3>
+          <a class="post-link" href="/jekyll/update/2025/05/26/welcome-to-jekyll.html">
+            Welcome to Jekyll!
+          </a>
+        </h3></li><li><span class="post-meta">May 25, 2025</span>
+        <h3>
+          <a class="post-link" href="/2025/05/25/primo-post.html">
+            Esempio completo di post in Markdown
+          </a>
+        </h3></li><li><span class="post-meta">May 25, 2025</span>
+        <h3>
+          <a class="post-link" href="/2025/05/25/primo-post-copy.html">
+            Esempio completo di post in Markdown
+          </a>
+        </h3></li></ul>
 
-<p>L’Ufficio Digitale di Gabriel Matteo Jones è un servizio offerto da GJWS pensato per fornire supporto completo nella gestione di siti web e nella gestione aziendale.
-Attraverso questo sito, potrai accedere a una vasta gamma di risorse e contenuti pubblici relativi all’attività di Gabriel Matteo Jones, tra cui documenti ufficiali, l’ordinogramma, informazioni sulle organizzazioni coinvolte e molto altro ancora.</p>
-
-<p>Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione diretta con il mondo di Gabriel Matteo Jones, offrendo uno spazio digitale ordinato, aggiornato e accessibile a chiunque voglia conoscere meglio la sua realtà professionale.</p>
-
-<div class="container my-5">
-  <h2 class="mb-4">Ultimi articoli</h2>
-  <div class="row g-4">
-    
-      <div class="col-md-6 col-lg-4">
-        
-
-<div class="card h-100 shadow-sm border-0">
-  
-
-  <div class="card-body d-flex flex-column">
-    <h5 class="card-title">
-      <a href="/2025/05/25/primo-post.html" class="text-decoration-none text-dark">Esempio completo di post in Markdown</a>
-    </h5>
-    <p class="card-text text-muted mb-4">
-      Titolo di primo livello
-
-    </p>
-
-    <div class="mt-auto d-flex align-items-center">
-      
-        <img src="https://1.gravatar.com/avatar/53241b11fb23d653d6c97ab192be4c459ef4201d71bffe0b87f8c09c061c577b?size=900&amp;d=initials" alt="Gabriel Matteo Jones" class="rounded-circle me-2" style="width: 40px; height: 40px;" />
-      
-      <div>
-        <small class="fw-bold">Gabriel Matteo Jones</small><br />
-        <small class="text-muted">25 May 2025</small>
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-      <div class="col-md-6 col-lg-4">
-        
-
-<div class="card h-100 shadow-sm border-0">
-  
-
-  <div class="card-body d-flex flex-column">
-    <h5 class="card-title">
-      <a href="/2025/05/25/primo-post-copy.html" class="text-decoration-none text-dark">Esempio completo di post in Markdown</a>
-    </h5>
-    <p class="card-text text-muted mb-4">
-      Titolo di primo livello
-
-    </p>
-
-    <div class="mt-auto d-flex align-items-center">
-      
-        <img src="https://1.gravatar.com/avatar/53241b11fb23d653d6c97ab192be4c459ef4201d71bffe0b87f8c09c061c577b?size=900&amp;d=initials" alt="Gabriel Matteo Jones" class="rounded-circle me-2" style="width: 40px; height: 40px;" />
-      
-      <div>
-        <small class="fw-bold">Gabriel Matteo Jones</small><br />
-        <small class="text-muted">25 May 2025</small>
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p></div>
 
   </main>
   <p>Powered by DataWin</p>
