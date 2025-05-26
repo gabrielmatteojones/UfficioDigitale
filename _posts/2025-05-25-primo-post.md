@@ -3,6 +3,7 @@ layout: post
 title: "Esempio completo di post in Markdown"
 date: 2025-05-25
 author_id: gabriel
+img:
 ---
 
 # Titolo di primo livello
