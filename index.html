@@ -125,6 +125,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
           let descriptionText = div.textContent || div.innerText || "";
 
           return `
+            <div class="container-news">
             <div class="news-card">
               <img src="${imgSrc}" alt="${item.title}" class="news-img" />
               <div class="news-content">
@@ -132,6 +133,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
                 <div class="news-date">${pubDate}</div>
                 <div class="news-text">${descriptionText}</div>
               </div>
+            </div>
             </div>
           `;
         }).join("");
