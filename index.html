@@ -5,34 +5,88 @@ author_id: gabriel
 ---
 
 <div class="content">
-<h3>Benvenuti nell'ufficio digitale di Gabriel Matteo Jones!</h3>
-<hr>
-L'Ufficio Digitale di Gabriel Matteo Jones è un servizio offerto da GJWS pensato per fornire supporto completo nella gestione di siti web e nella gestione aziendale.
-Attraverso questo sito, potrai accedere a una vasta gamma di risorse e contenuti pubblici relativi all’attività di Gabriel Matteo Jones, tra cui documenti ufficiali, l’ordinogramma, informazioni sulle organizzazioni coinvolte e molto altro ancora.
-<hr>
-Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione diretta con il mondo di Gabriel Matteo Jones, offrendo uno spazio digitale ordinato, aggiornato e accessibile a chiunque voglia conoscere meglio la sua realtà professionale.
-</div>
-<div class="container-news">
-  {% assign recent_posts = site.posts | slice: 0, 6 %}
-  {% for post in recent_posts %}
-    <div class="news-card">
-      <img src="{{ post.image | default: 'https://ufficio.gjws.it/posts.gif' }}" class="news-img" alt="{{ post.title }}">
-      <div class="news-content">
-        <a href="{{ post.url | relative_url }}" class="news-title">{{ post.title }}</a>
-        <div class="news-date">{{ post.date | date: "%-d %B %Y" }}</div>
-        <div class="news-text">{{ post.excerpt | strip_html | truncate: 120 }}</div>
-      </div>
-    </div>
-  {% endfor %}
+  <h3>Benvenuti nell'ufficio digitale di Gabriel Matteo Jones!</h3>
+  <hr>
+  L'Ufficio Digitale di Gabriel Matteo Jones è un servizio offerto da GJWS pensato per fornire supporto completo nella gestione di siti web e nella gestione aziendale.
+  Attraverso questo sito, potrai accedere a una vasta gamma di risorse e contenuti pubblici relativi all’attività di Gabriel Matteo Jones, tra cui documenti ufficiali, l’ordinogramma, informazioni sulle organizzazioni coinvolte e molto altro ancora.
+  <hr>
+  Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione diretta con il mondo di Gabriel Matteo Jones, offrendo uno spazio digitale ordinato, aggiornato e accessibile a chiunque voglia conoscere meglio la sua realtà professionale.
 </div>
 
+<section class="news">
+  <h2>Ultime dal blog</h2>
+  <div id="news-feed"></div>
+</section>
+
+<section class="jekyll-posts">
+  <h2>Documenti recenti</h2>
+  <div class="container-news">
+    {% assign recent_posts = site.posts | slice: 0, 6 %}
+    {% for post in recent_posts %}
+      <div class="news-card">
+        <img src="{{ post.image | default: 'https://ufficio.gjws.it/posts.gif' }}" class="news-img" alt="{{ post.title }}">
+        <div class="news-content">
+          <a href="{{ post.url | relative_url }}" class="news-title">{{ post.title }}</a>
+          <div class="news-date">{{ post.date | date: "%-d %B %Y" }}</div>
+          <div class="news-text">{{ post.excerpt | strip_html | truncate: 120 }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("news-feed");
+      const items = data.items.slice(0, 6); // mostra max 6 post
+
+      container.innerHTML = items.map(item => {
+        let imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+        let imgSrc = imgMatch ? imgMatch[1] : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Document_icon.svg/1200px-Document_icon.svg.png";
+        let pubDate = item.pubDate.split(' ')[0];
+        let div = document.createElement("div");
+        div.innerHTML = item.description;
+        let descriptionText = div.textContent || div.innerText || "";
+
+        return `
+          <div class="news-card">
+            <img src="${imgSrc}" alt="${item.title}" class="news-img" />
+            <div class="news-content">
+              <a href="${item.link}" target="_blank" class="news-title">${item.title}</a>
+              <div class="news-date">${pubDate}</div>
+              <div class="news-text">${descriptionText}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    })
+    .catch(err => {
+      document.getElementById("news-feed").innerHTML = "<p>Errore nel caricamento delle notizie.</p>";
+      console.error(err);
+    });
+</script>
+
 <style>
-  .container-news {
+  .container-news, #news-feed {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 30px auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  @media (min-width: 576px) {
+    .container-news, #news-feed {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container-news, #news-feed {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .news-card {
@@ -41,10 +95,9 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s;
-    aspect-ratio: 1 / 1;
   }
 
   .news-card:hover {
@@ -53,7 +106,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
 
   .news-img {
     width: 100%;
-    height: 50%;
+    height: 180px;
     object-fit: cover;
   }
 
@@ -62,7 +115,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50%;
+    flex: 1;
   }
 
   .news-title {
@@ -70,6 +123,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
     font-size: 1.1rem;
     font-weight: bold;
     text-decoration: none;
+    margin-bottom: 5px;
   }
 
   .news-date {
@@ -82,127 +136,16 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
   .news-text {
     font-size: 0.95rem;
     color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
-  @media (min-width: 576px) {
-    .container-news {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 992px) {
-    .container-news {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  h2 {
+    text-align: center;
+    margin-top: 50px;
+    color: #003366;
   }
 </style>
-
-
-
-<section class="news">
-  <h2>Ultime dal blog</h2>
-  <div id="news-feed"></div>
-</section>
-
-  <script>
-    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("news-feed");
-        const items = data.items.slice(0, 5); // prendi i primi 5 post
-
-        container.innerHTML = items.map(item => {
-          // Cerca immagine nel content, se non c’è metti un placeholder
-          let imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
-          let imgSrc = imgMatch ? imgMatch[1] : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Document_icon.svg/1200px-Document_icon.svg.png";
-
-          // Data in formato YYYY-MM-DD (prima parte)
-          let pubDate = item.pubDate.split(' ')[0];
-
-          // Usa testo plain dalla descrizione (rimuovo eventuali tag HTML)
-          let div = document.createElement("div");
-          div.innerHTML = item.description;
-          let descriptionText = div.textContent || div.innerText || "";
-
-          return `
-            <div class="container-news">
-            <div class="news-card">
-              <img src="${imgSrc}" alt="${item.title}" class="news-img" />
-              <div class="news-content">
-                <a href="${item.link}" target="_blank" class="news-title">${item.title}</a>
-                <div class="news-date">${pubDate}</div>
-                <div class="news-text">${descriptionText}</div>
-              </div>
-            </div>
-            </div>
-          `;
-        }).join("");
-      })
-      .catch(err => {
-        document.getElementById("news-feed").innerHTML = "<p>Errore nel caricamento dei documenti.</p>";
-        console.error(err);
-      });
-  </script>
-  <style>
-.news-card {
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-  background-color: white;
-  border: 4px solid #a40000;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.news-card > * {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.news-img {
-  flex: 1;
-  width: 100%;
-  object-fit: cover;
-  background-color: #ddd;
-}
-
-.news-content {
-  flex: 1;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.news-title {
-  color: #003366;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-  margin-bottom: 5px;
-}
-
-.news-date {
-  color: #a40000;
-  font-style: italic;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-}
-
-.news-text {
-  font-size: 0.95rem;
-  color: #333;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-  </style>
