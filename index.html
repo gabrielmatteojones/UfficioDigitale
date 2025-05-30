@@ -104,29 +104,40 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
   <div id="news-feed"></div>
 </section>
 
-<script>
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById("news-feed");
-      const items = data.items.slice(0, 5); // Mostra i primi 5 post
+  <script>
+    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("news-feed");
+        const items = data.items.slice(0, 5); // prendi i primi 5 post
 
-      container.innerHTML = items.map((item, index) => {
-        const imgSrc = "https://ufficio.gjws.it/posts.gif"; // Immagine statica
-        const postDate = new Date(item.pubDate).toLocaleDateString("it-IT", {
-          day: "2-digit", month: "short", year: "numeric"
-        });
+        container.innerHTML = items.map(item => {
+          // Cerca immagine nel content, se non c’è metti un placeholder
+          let imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+          let imgSrc = imgMatch ? imgMatch[1] : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Document_icon.svg/1200px-Document_icon.svg.png";
 
-        return `
-          <div class="news-card">
-            <img src="${imgSrc}" class="news-img" alt="${item.title}" data-cmp-info="${index + 1}">
-            <div class="news-content">
-              <a href="${item.link}" class="news-title">${item.title}</a>
-              <div class="news-date">${postDate}</div>
-              <div class="news-text">${item.description}</div>
+          // Data in formato YYYY-MM-DD (prima parte)
+          let pubDate = item.pubDate.split(' ')[0];
+
+          // Usa testo plain dalla descrizione (rimuovo eventuali tag HTML)
+          let div = document.createElement("div");
+          div.innerHTML = item.description;
+          let descriptionText = div.textContent || div.innerText || "";
+
+          return `
+            <div class="news-card">
+              <img src="${imgSrc}" alt="${item.title}" class="news-img" />
+              <div class="news-content">
+                <a href="${item.link}" target="_blank" class="news-title">${item.title}</a>
+                <div class="news-date">${pubDate}</div>
+                <div class="news-text">${descriptionText}</div>
+              </div>
             </div>
-          </div>
-        `;
-      }).join("");
-    });
-</script>
+          `;
+        }).join("");
+      })
+      .catch(err => {
+        document.getElementById("news-feed").innerHTML = "<p>Errore nel caricamento dei documenti.</p>";
+        console.error(err);
+      });
+  </script>
