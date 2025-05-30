@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: redazione
 author_id: gabriel
 ---
 <iframe 
