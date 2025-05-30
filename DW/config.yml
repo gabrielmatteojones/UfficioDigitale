@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main  # o "master" se il tuo repo usa quel ramo
+
+media_folder: "assets/images/uploads" # Dove verranno salvate le immagini nel repo
+public_folder: "/assets/images/uploads" # Dove verranno richiamate sul sito
+
+collections:
+  - name: "posts"
+    label: "Post del blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Autore (ID)", name: "author_id", widget: "hidden", default: "gabriel" }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
