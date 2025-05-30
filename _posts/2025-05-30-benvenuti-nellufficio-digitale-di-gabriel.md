@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Benvenuti nell'Ufficio Digitale di Gabriel
-date: 2024-01-01T16:30:00.000Z
+date: 2025-05-30 16:30:00 +0200
 author_id: gabriel
 ---
 
