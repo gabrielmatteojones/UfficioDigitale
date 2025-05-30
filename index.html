@@ -96,3 +96,19 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
     }
   }
 </style>
+
+
+
+<section class="latest-posts">
+  <h2>Ultimi 6 articoli dal blog</h2>
+  <div class="posts-grid">
+    {% for post in site.data.remote_posts %}
+      <article class="card">
+        <a href="{{ post.url }}">
+          <h3 class="card__title">{{ post.title }}</h3>
+          <time class="card__date">{{ post.date | date: "%Y-%m-%d" }}</time>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
