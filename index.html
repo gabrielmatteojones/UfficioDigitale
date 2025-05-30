@@ -141,3 +141,88 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
         console.error(err);
       });
   </script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    .container-news {
+      max-width: 1200px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 15px;
+    }
+
+    /* Tablet: 2 colonne */
+    @media (min-width: 576px) {
+      .container-news {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Desktop: 3 colonne */
+    @media (min-width: 992px) {
+      .container-news {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .news-card {
+      background-color: white;
+      border: 4px solid #a40000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+      aspect-ratio: 1 / 1;
+    }
+
+    .news-card:hover {
+      transform: scale(1.02);
+    }
+
+    .news-img {
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+      background-color: #ddd; /* placeholder se manca immagine */
+    }
+
+    .news-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 50%;
+    }
+
+    .news-title {
+      color: #003366;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    .news-date {
+      color: #a40000;
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .news-text {
+      font-size: 0.95rem;
+      color: #333;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* limita a 3 righe */
+      -webkit-box-orient: vertical;
+    }
+  </style>
