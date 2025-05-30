@@ -16,9 +16,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
   {% assign recent_posts = site.posts | slice: 0, 6 %}
   {% for post in recent_posts %}
     <div class="news-card">
-      {% if post.image %}
-        <img src="https://ufficio.gjws.it/posts.gif" class="news-img" alt="{{ post.title }}">
-      {% endif %}
+      <img src="{{ post.image | default: 'https://ufficio.gjws.it/posts.gif' }}" class="news-img" alt="{{ post.title }}">
       <div class="news-content">
         <a href="{{ post.url | relative_url }}" class="news-title">{{ post.title }}</a>
         <div class="news-date">{{ post.date | date: "%-d %B %Y" }}</div>
