@@ -4,6 +4,7 @@ title: Benvenuti nell'Ufficio Digitale di Gabriel
 date: 2025-05-30T16:30:00.000Z
 author_id: gabriel
 ---
+
 **Ciao a tutti e benvenuti!**
 
 Siete appena entrati nell’**Ufficio Digitale di Gabriel Matteo Jones**, il centro operativo interno di **GJWS** dedicato alla gestione a 360° di documenti, eventi, siti web e molto altro ancora.
