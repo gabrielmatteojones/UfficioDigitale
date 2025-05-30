@@ -30,6 +30,7 @@ github_username:  /
 theme: minima
 plugins:
   - jekyll-feed
+  - remote_feed
 
 # Exclude from processing.
 # The following items will not be processed, by default.
