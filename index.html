@@ -52,12 +52,14 @@ author_id: gabriel
 
         return `
           <div class="news-card">
+          <a href="${item.link}" target="_blank" class="news-title">
             <img src="https://ufficio.gjws.it/posts.gif" alt="${item.title}" class="news-img" />
             <div class="news-content">
               <a href="${item.link}" target="_blank" class="news-title">${item.title}</a>
               <div class="news-date">${pubDate}</div>
               <div class="news-text">${descriptionText}</div>
             </div>
+            </a>
           </div>
         `;
       }).join("");
