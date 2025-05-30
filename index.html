@@ -99,16 +99,20 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
 
 
 
-<section class="latest-posts">
-  <h2>Ultimi 6 articoli dal blog</h2>
-  <div class="posts-grid">
-    {% for post in site.data.remote_posts %}
-      <article class="card">
-        <a href="{{ post.url }}">
-          <h3 class="card__title">{{ post.title }}</h3>
-          <time class="card__date">{{ post.date | date: "%Y-%m-%d" }}</time>
-        </a>
-      </article>
-    {% endfor %}
-  </div>
-</section>
+<div id="news-feed"></div>
+
+<script>
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("news-feed");
+      const items = data.items.slice(0, 5); // mostra i primi 5 post
+      container.innerHTML = items.map(item => `
+        <div style="margin-bottom: 1em;">
+          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+          <p>${item.pubDate.split(' ')[0]}</p>
+          <p>${item.description}</p>
+        </div>
+      `).join("");
+    });
+</script>
