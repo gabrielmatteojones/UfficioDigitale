@@ -22,7 +22,7 @@ author_id: gabriel
 <section class="jekyll-posts">
   <h2>Ultimi Post dal blog</h2>
   <div class="container-news">
-    {% assign recent_posts = site.posts | slice: 0, 6 %}
+{% assign posts = site.posts | where: "lang", page.lang | sort: "date" | reverse | slice: 0,6 %}
     {% for post in recent_posts %}
       <div class="news-card">
         <img src="{{ post.image | default: 'https://ufficio.gjws.it/posts.gif' }}" class="news-img" alt="{{ post.title }}">
@@ -35,7 +35,6 @@ author_id: gabriel
     {% endfor %}
   </div>
 </section>
-
 <script>
   fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
     .then(res => res.json())
