@@ -17,7 +17,7 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
   {% for post in recent_posts %}
     <div class="news-card">
       {% if post.image %}
-        <img src="{{ post.image }}" class="news-img" alt="{{ post.title }}">
+        <img src="/posts.gif" class="news-img" alt="{{ post.title }}">
       {% endif %}
       <div class="news-content">
         <a href="{{ post.url | relative_url }}" class="news-title">{{ post.title }}</a>
