@@ -99,20 +99,34 @@ Tutto ciò è pensato per garantire trasparenza, efficienza e una comunicazione 
 
 
 
-<div id="news-feed"></div>
+<section class="news">
+  <h2>Ultime dal blog</h2>
+  <div id="news-feed"></div>
+</section>
 
 <script>
   fetch("https://api.rss2json.com/v1/api.json?rss_url=https://gabrieljones.it/tag/feed.xml")
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById("news-feed");
-      const items = data.items.slice(0, 5); // mostra i primi 5 post
-      container.innerHTML = items.map(item => `
-        <div style="margin-bottom: 1em;">
-          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-          <p>${item.pubDate.split(' ')[0]}</p>
-          <p>${item.description}</p>
-        </div>
-      `).join("");
+      const items = data.items.slice(0, 5); // Mostra i primi 5 post
+
+      container.innerHTML = items.map((item, index) => {
+        const imgSrc = "https://ufficio.gjws.it/posts.gif"; // Immagine statica
+        const postDate = new Date(item.pubDate).toLocaleDateString("it-IT", {
+          day: "2-digit", month: "short", year: "numeric"
+        });
+
+        return `
+          <div class="news-card">
+            <img src="${imgSrc}" class="news-img" alt="${item.title}" data-cmp-info="${index + 1}">
+            <div class="news-content">
+              <a href="${item.link}" class="news-title">${item.title}</a>
+              <div class="news-date">${postDate}</div>
+              <div class="news-text">${item.description}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
     });
 </script>
