@@ -1,0 +1,15 @@
+---
+layout: default
+title: Tutti i Post
+---
+
+<h1>{{ page.title }}</h1>
+
+<ul>
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a> - <small>{{ post.date | date: "%d %B %Y" }}</small>
+    <p>{{ post.excerpt }}</p>
+  </li>
+  {% endfor %}
+</ul>
